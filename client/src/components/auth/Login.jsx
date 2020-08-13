@@ -1,17 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const Login = () => {
 
-    const onChange = () => {
+    // State para iniciar sesion
+    const [usuario, guardarUsuario] = useState({
+        email: '',
+        password: ''
+    });
 
+    // Extraer de usuario
+    const { email, password } = usuario;
+
+    // Funciones
+    const onChange = e => {
+        guardarUsuario({
+            ...usuario,
+            [e.target.name] : e.target.value
+        })
     }
+
+    // Cuando el usuario quiera iniciar sesion
+    const onSubmit = e => {
+        e.preventDefault();
+
+        // Validacion
+
+        // Pasarlo al action
+    }
+
 
     return (  
         <div className="form-usuario">
             <div className="contenedor-form sombra-dark">
                 <h1>Iniciar Sesion</h1>
 
-                <form>
+                <form
+                    onSubmit={onSubmit}
+                >
                     <div className="campo-form">
                        <label htmlFor="email">Email</label>
                        <input
@@ -19,6 +46,7 @@ const Login = () => {
                             id="email"
                             name="email"
                             placeholder="Ingrese su correo"
+                            value={email}
                             onChange={onChange}
                        /> 
                     </div>
@@ -30,6 +58,7 @@ const Login = () => {
                             id="password"
                             name="password"
                             placeholder="Ingrese su contraseña"
+                            value={password}
                             onChange={onChange}
                        /> 
                     </div>
@@ -38,6 +67,10 @@ const Login = () => {
                         <input type="submit" className="btn btn-primario btn-block" value="Iniciar sesion" />
                     </div>
                 </form>
+
+                <Link to={'/nueva-cuenta'} className="enlace-cuenta">
+                    Obtener cuenta
+                </Link>
             </div>
         </div>
     );
