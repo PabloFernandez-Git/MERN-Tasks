@@ -9,11 +9,11 @@ const ListadoTareas = () => {
         {nombre: 'Elegir colores', estado: false},
         {nombre: 'Elegir plataforma de pago', estado: false},
         {nombre: 'Elegir hosting', estado: true}
-    ]
+    ];
 
     return (
         <Fragment>
-            <h2>Proyecto: Tienda virtual</h2>
+            <h2>Proyecto: Tienda Virtual</h2>
 
             <ul className="listado-tareas">
                 {tareasProyecto.length ===  0
@@ -25,8 +25,13 @@ const ListadoTareas = () => {
                     ))
                 }
             </ul>
+
+            <button
+                type="button"
+                className="btn btn-eliminar"
+            >Eliminar proyecto &times;</button>
         </Fragment>  
     );
 }
- 
+
 export default ListadoTareas;
